@@ -21,6 +21,8 @@ export default function App() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const scrollSentinelRef = useRef(null);
 
+  // nice example of react useMemo here... 
+  
   const filteredListings = useMemo(() => {
     return LISTINGS.filter(listing => {
       const matchCategory = listing.category === selectedCategory;
@@ -30,6 +32,7 @@ export default function App() {
       return matchCategory && matchLocation;
     });
   }, [selectedCategory, searchParams]);
+
 
   // Handle category change reset
   useEffect(() => {
