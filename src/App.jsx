@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Categories from './components/Categories';
