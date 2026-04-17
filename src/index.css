@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --color-airbnb-red: #FF385C;
+  --color-airbnb-dark: #222222;
+  --color-airbnb-muted: #717171;
+  --color-airbnb-border: #DDDDDD;
+  
+  --shadow-airbnb: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-airbnb-hover: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+@layer base {
+  body {
+    @apply font-sans text-airbnb-dark bg-white antialiased;
+  }
+}
+
+@layer components {
+  .btn-airbnb {
+    @apply bg-airbnb-red text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity active:scale-95 duration-200;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
