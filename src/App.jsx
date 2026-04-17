@@ -1,3 +1,12 @@
+  // nice example of react useMemo here... 
+  /** key react concepts like below are heavily used here 
+   * useState, useMemo, useEffect, useRef
+   * 
+   *  this will come handy in the future too...
+   * 
+   */
+
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Categories from './components/Categories';
@@ -21,8 +30,6 @@ export default function App() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const scrollSentinelRef = useRef(null);
 
-  // nice example of react useMemo here... 
-  
   const filteredListings = useMemo(() => {
     return LISTINGS.filter(listing => {
       const matchCategory = listing.category === selectedCategory;
@@ -116,7 +123,7 @@ export default function App() {
 
       <Footer />
 
-      {/* Floating Map Button */}
+      {/* Floating Map Button Hmm hard to maintain on div's */}
       <div className="fixed bottom-24 md:bottom-12 left-1/2 -translate-x-1/2 z-40">
         <button className="bg-airbnb-dark text-white flex items-center gap-2 py-3.5 px-5 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 font-semibold text-sm group">
           <span>Show map</span>
@@ -143,3 +150,4 @@ export default function App() {
   );
 }
 
+// fewh ... !
