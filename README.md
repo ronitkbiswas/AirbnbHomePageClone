@@ -1,51 +1,20 @@
-# Airbnb Homepage Clone
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-## 📌 Overview
+# Run and deploy your AI Studio app
 
-A fully responsive clone of the Airbnb homepage built using **React** and **Tailwind CSS**. Focused on clean UI, reusable components, and modern frontend practices.
+This contains everything you need to run your app locally.
 
----
+View your app in AI Studio: https://ai.studio/apps/9a58a75c-a161-4a52-9719-8594f0849cc3
 
-## 🚀 Objectives
+## Run Locally
 
-* Build reusable components with React
-* Implement responsive design using Tailwind CSS
-* Replicate Airbnb’s layout and styling
-* Add minor custom improvements
+**Prerequisites:**  Node.js
 
----
 
-## 🛠️ Tech Stack
-
-* React
-* Tailwind CSS
-
----
-
-## 📦 Features
-
-* Fully responsive design 📱💻
-* Clean and modular code structure
-* Airbnb-inspired UI
-
----
-
-## 🌐 Live Demo
-
-👉 [https://airbnb-home-page-clone.vercel.app/](https://airbnb-home-page-clone.vercel.app/)
-
----
-
-## 🚀 Deployment
-
-Deployed on **Vercel**
-
----
-
-## 📊 Evaluation Focus
-
-* Code quality
-* UI accuracy
-* Responsiveness
-
----
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

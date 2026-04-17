@@ -1,3 +1,8 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Categories from './components/Categories';
@@ -67,7 +72,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#FCFCFC] relative selection:bg-airbnb-red/10 selection:text-airbnb-red">
+      {/* Hardcore Background Elements */}
+      <div className="fixed inset-0 noise-overlay -z-10" />
+      <div className="fixed inset-0 bg-gradient-to-b from-transparent via-white/5 to-white/10 pointer-events-none -z-10" />
+      
       <Header onSearch={handleSearch} />
       
       <main className="pt-[80px]">

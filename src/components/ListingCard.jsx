@@ -33,20 +33,27 @@ export default function ListingCard({ listing }) {
         onClick={() => setShowBooking(true)}
         className="col-span-1 cursor-pointer group"
       >
-        <div className="flex flex-col gap-3 w-full">
-          <div className="aspect-[20/19] relative overflow-hidden rounded-xl bg-neutral-100 shadow-sm">
+        <div className="flex flex-col gap-3 w-full group/card isolate transition-all duration-700 hover:-translate-y-2">
+          <div className="aspect-[20/19] relative overflow-hidden rounded-[20px] bg-neutral-200 shadow-premium transition-all duration-700 group-hover/card:shadow-2xl group-hover/card:shadow-airbnb-red/10">
             <AnimatePresence mode="wait">
               <motion.img 
                 key={currentImage}
                 src={listing.images[currentImage]} 
-                initial={{ opacity: 0.8 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                className="object-cover h-full w-full transition duration-500"
+                initial={{ opacity: 0.8, scale: 1.1, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="object-cover h-full w-full transition duration-1000 group-hover/card:scale-110"
                 alt={listing.title}
                 referrerPolicy="no-referrer"
               />
             </AnimatePresence>
+            
+            {/* Visual Flair Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/5 opacity-60 pointer-events-none" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[20px] pointer-events-none" />
+            
+            {/* Shimmer overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 pointer-events-none mix-blend-overlay" />
             
             {/* Overlay Buttons */}
             <div className="absolute top-3 right-3 z-10">
@@ -90,23 +97,23 @@ export default function ListingCard({ listing }) {
             </div>
           </div>
 
-          <div className="flex flex-col gap-0.5 mt-0.5">
+          <div className="flex flex-col gap-0.5 mt-2">
             <div className="flex justify-between items-start text-[15px]">
-              <div className="font-semibold text-airbnb-dark truncate pr-4">{listing.title}</div>
-              <div className="flex items-center gap-1 font-normal min-w-fit">
-                <Star size={14} className="fill-airbnb-dark text-airbnb-dark" />
-                <span>{listing.rating.toFixed(1)}</span>
+              <div className="font-semibold text-airbnb-dark truncate pr-4 tracking-tight group-hover/card:text-black transition-colors">{listing.title}</div>
+              <div className="flex items-center gap-1 font-medium text-neutral-800 min-w-fit">
+                <Star size={14} className="fill-black text-black" />
+                <span className="text-[13px]">{listing.rating.toFixed(2)}</span>
               </div>
             </div>
             
-            <div className="text-airbnb-muted font-normal text-[15px] leading-tight flex flex-col">
-              <span className="truncate">{listing.description}</span>
-              <span>{listing.date}</span>
+            <div className="text-airbnb-muted font-normal text-[14px] leading-tight flex flex-col tracking-[0.01em]">
+              <span className="truncate group-hover/card:text-neutral-600 transition-colors">{listing.description}</span>
+              <span className="text-neutral-400">{listing.date}</span>
             </div>
 
-            <div className="flex flex-row items-center gap-1 mt-1.5">
-              <span className="font-semibold text-[15px]">₹{listing.price.toLocaleString('en-IN')}</span>
-              <span className="font-normal text-[15px]">night</span>
+            <div className="flex flex-row items-center gap-1 mt-2">
+              <span className="font-semibold text-[15px] text-airbnb-dark tracking-tight">₹{listing.price.toLocaleString('en-IN')}</span>
+              <span className="font-light text-[15px] text-neutral-600">night</span>
             </div>
           </div>
         </div>

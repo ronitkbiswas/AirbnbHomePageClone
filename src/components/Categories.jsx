@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
 import { SlidersHorizontal, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import { CATEGORIES } from '../data';
 
 export default function Categories({ selectedCategory, onSelect }) {
@@ -39,10 +40,10 @@ export default function Categories({ selectedCategory, onSelect }) {
         <div className="relative flex-1 overflow-hidden group">
           {/* Left Arrow */}
           {showLeftArrow && (
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10 hidden md:flex items-center">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white via-white/95 to-transparent z-10 hidden md:flex items-center">
               <button 
                 onClick={() => scroll('left')}
-                className="p-1.5 rounded-full border border-airbnb-border bg-white hover:shadow-airbnb transition hover:scale-105 active:scale-95"
+                className="p-1.5 rounded-full border border-neutral-200 bg-white hover:shadow-airbnb transition-all duration-300 hover:scale-110 active:scale-95 shadow-sm"
               >
                 <ChevronLeft size={16} strokeWidth={3} />
               </button>
@@ -51,10 +52,10 @@ export default function Categories({ selectedCategory, onSelect }) {
 
           {/* Right Arrow */}
           {showRightArrow && (
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10 hidden md:flex items-center justify-end">
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white via-white/95 to-transparent z-10 hidden md:flex items-center justify-end">
               <button 
                 onClick={() => scroll('right')}
-                className="p-1.5 rounded-full border border-airbnb-border bg-white hover:shadow-airbnb transition hover:scale-105 active:scale-95"
+                className="p-1.5 rounded-full border border-neutral-200 bg-white hover:shadow-airbnb transition-all duration-300 hover:scale-110 active:scale-95 shadow-sm"
               >
                 <ChevronRight size={16} strokeWidth={3} />
               </button>
@@ -72,16 +73,23 @@ export default function Categories({ selectedCategory, onSelect }) {
                 <div 
                   key={item.id}
                   onClick={() => onSelect(item.id)}
-                  className={`flex flex-col items-center justify-center gap-2 cursor-pointer min-w-fit transition-all duration-300 border-b-2 py-3 md:py-4
+                  className={`flex flex-col items-center justify-center gap-2.5 cursor-pointer min-w-fit transition-all duration-500 border-b-2 py-3 md:py-4 relative group/item
                     ${selectedCategory === item.id 
-                      ? 'border-airbnb-dark text-airbnb-dark opacity-100 scale-105' 
-                      : 'border-transparent text-airbnb-muted opacity-60 hover:opacity-100 hover:border-airbnb-border'}
+                      ? 'border-airbnb-dark text-airbnb-dark opacity-100' 
+                      : 'border-transparent text-airbnb-muted opacity-60 hover:opacity-100 hover:border-neutral-200'}
                   `}
                 >
-                  <Icon size={24} strokeWidth={selectedCategory === item.id ? 2.5 : 2} />
-                  <span className={`text-[12px] font-medium tracking-tight whitespace-nowrap ${selectedCategory === item.id ? 'font-bold' : ''}`}>
+                  <Icon size={24} strokeWidth={selectedCategory === item.id ? 2.5 : 2} className={`transition-all duration-500 ${selectedCategory === item.id ? 'scale-110 drop-shadow-md rotate-[5deg]' : 'group-hover/item:scale-110 group-hover/item:-rotate-3'}`} />
+                  <span className={`text-[12px] tracking-tight whitespace-nowrap transition-all duration-500 ${selectedCategory === item.id ? 'font-bold scale-105' : 'font-medium'}`}>
                     {item.name}
                   </span>
+                  {selectedCategory === item.id && (
+                    <motion.div 
+                      layoutId="activeCategory"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-airbnb-dark shadow-glow"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
                 </div>
               );
             })}

@@ -114,8 +114,8 @@ export default function Header({ onSearch }) {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out flex items-center bg-white 
-          ${isScrolled ? 'h-[72px] shadow-[0_2px_4px_rgba(0,0,0,0.04)]' : 'h-[80px] border-b-[1px] border-airbnb-border'}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) flex items-center 
+          ${isScrolled ? 'h-[72px] bg-white/80 backdrop-blur-xl shadow-premium border-b border-black/5' : 'h-[80px] bg-white border-b-[1px] border-airbnb-border'}
         `}
       >
         <div className="w-full px-6 md:px-12">
@@ -131,8 +131,8 @@ export default function Header({ onSearch }) {
             {/* Search Bar */}
             <div 
               onClick={() => { setShowSearchOverlay(true); setActiveSearchTab('where'); }}
-              className={`border-[1px] border-airbnb-border w-full md:w-auto rounded-full shadow-airbnb hover:shadow-airbnb-hover transition-all duration-300 cursor-pointer flex items-center bg-white overflow-hidden
-                ${isScrolled ? 'py-1.5 scale-95 md:scale-100' : 'py-2 mt-1 md:mt-0'}
+              className={`group/search border-[1px] border-airbnb-border w-full md:w-auto rounded-full shadow-airbnb hover:shadow-glow transition-all duration-500 cursor-pointer flex items-center bg-white overflow-hidden active:scale-95
+                ${isScrolled ? 'py-1.5 scale-95 md:scale-100 ring-1 ring-black/5' : 'py-2 mt-1 md:mt-0'}
               `}
             >
               <div className="flex flex-row items-center justify-between w-full font-semibold text-[13px] md:text-sm">
@@ -178,7 +178,7 @@ export default function Header({ onSearch }) {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-[60px] w-64 bg-white rounded-xl shadow-[0_2px_16px_rgba(0,0,0,0.12)] border border-neutral-200 py-2 z-[60] overflow-hidden"
+                    className="absolute right-0 top-[60px] w-64 bg-white/90 backdrop-blur-xl rounded-xl shadow-[0_2px_16px_rgba(0,0,0,0.12)] border border-white/50 py-2 z-[60] overflow-hidden"
                   >
                     <div className="flex flex-col">
                       <div className="px-4 py-3 hover:bg-neutral-100 transition cursor-pointer font-semibold text-sm">Sign up</div>
@@ -273,16 +273,17 @@ export default function Header({ onSearch }) {
                   </div>
                   <button 
                     onClick={handleSearchClick}
-                    className="flex items-center gap-2 bg-airbnb-red text-white py-3 px-6 rounded-full font-bold shadow-lg"
+                    className="group/btn relative flex items-center gap-2 bg-airbnb-red text-white py-3 px-6 rounded-full font-bold shadow-lg shadow-airbnb-red/30 transition-all duration-300 hover:shadow-airbnb-red/50 hover:scale-105 active:scale-95 overflow-hidden"
                   >
-                    <Search size={18} />
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000" />
+                    <Search size={18} strokeWidth={3} />
                     <span>Search</span>
                   </button>
                 </div>
               </div>
 
               {/* Calendar / Options View */}
-              <div className="bg-white rounded-[32px] p-8 shadow-2xl max-w-2xl mx-auto">
+              <div className="bg-white/80 backdrop-blur-2xl rounded-[32px] p-8 shadow-2xl max-w-2xl mx-auto border border-white/40">
                 {activeSearchTab === 'where' && (
                   <div>
                     <h4 className="text-sm font-bold mb-4">Search by region</h4>

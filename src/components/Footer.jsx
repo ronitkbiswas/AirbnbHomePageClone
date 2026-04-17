@@ -17,7 +17,7 @@ export default function Footer() {
               <h3 className="font-semibold text-sm">{column[0]}</h3>
               <div className="flex flex-col gap-3">
                 {column.slice(1).map((link, j) => (
-                  <a key={j} href="#" className="text-sm font-light text-neutral-600 hover:underline">
+                  <a key={j} href="#" className="text-sm font-normal text-neutral-500 hover:text-black transition-colors">
                     {link}
                   </a>
                 ))}
@@ -26,17 +26,17 @@ export default function Footer() {
           ))}
         </div>
         
-        <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-light">
+        <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-normal text-neutral-600">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
             <span>© 2026 Airbnb, Inc.</span>
             <span>·</span>
-            <a href="#" className="hover:underline">Privacy</a>
+            <a href="#" className="hover:text-black transition-colors">Privacy</a>
             <span>·</span>
-            <a href="#" className="hover:underline">Terms</a>
+            <a href="#" className="hover:text-black transition-colors">Terms</a>
             <span>·</span>
-            <a href="#" className="hover:underline">Sitemap</a>
+            <a href="#" className="hover:text-black transition-colors">Sitemap</a>
             <span>·</span>
-            <a href="#" className="hover:underline">Company details</a>
+            <a href="#" className="hover:text-black transition-colors">Company details</a>
           </div>
           
           <div className="flex items-center gap-6 font-semibold">
