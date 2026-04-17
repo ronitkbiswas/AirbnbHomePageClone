@@ -47,4 +47,6 @@ const generateListingsForCategory = (categoryId, categoryName, count = 25) => {
   });
 };
 
+// final export data set
+
 export const LISTINGS = CATEGORIES.flatMap(cat => generateListingsForCategory(cat.id, cat.name, 25));
