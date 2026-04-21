@@ -5,7 +5,8 @@
    *  this will come handy in the future too...
    * 
    */
-
+git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Header from './components/Header';
@@ -14,6 +15,7 @@ import ListingCard from './components/ListingCard';
 import Footer from './components/Footer';
 import { LISTINGS, CATEGORIES } from './data';
 import { Map as MapIcon, Menu, Loader2, Search, Heart, UserCircle } from 'lucide-react';
+import './index.css';
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState('amazing-pools');
@@ -150,4 +152,4 @@ export default function App() {
   );
 }
 
-// fewh ... !
+// frewh ! :)
