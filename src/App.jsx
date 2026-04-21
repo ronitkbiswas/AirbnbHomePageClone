@@ -5,8 +5,8 @@
    *  this will come handy in the future too...
    * 
    */
-git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
+// git config --global user.email "you@example.com"
+//   git config --global user.name "Your Name"
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Header from './components/Header';
